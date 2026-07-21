@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greybell Nursery & Primary School</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+
+:root {
+  --sky: #e8f4fd;
+  --pale: #d0e8f8;
+  --soft: #5a9fd4;
+  --mid:  #1e6ca8;
+  --deep: #0d3d6b;
+  --ink:  #0a2540;
+  --gold: #f0a500;
+  --gold2:#ffe08a;
+  --green:#27ae60;
+  --red:  #e74c3c;
+  --white:#ffffff;
+  --muted:#6b8cae;
+  --card-shadow: 0 4px 22px rgba(13,61,107,0.11);
+  --r: 13px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:var(--sky);color:var(--ink);min-height:100vh}
+
+/* PAGES */
+.pg{display:none;animation:fadeIn .3s ease}
+.pg.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ── TOP STRIP ── */
+#topstrip{
+  background:var(--ink);color:var(--white);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:7px 22px;font-size:12.5px;flex-wrap:wrap;gap:6px;
+}
+#topstrip .ts-clock{font-family:monospace;font-size:15px;font-weight:900;color:var(--gold);letter-spacing:1px}
+.ts-lin-btn{
+  background:var(--gold);color:var(--ink);border:none;border-radius:20px;
+  padding:5px 18px;font-weight:800;font-size:12.5px;cursor:pointer;
+  font-family:'Nunito',sans-serif;transition:background .2s;
+}
+.ts-lin-btn:hover{background:var(--gold2)}
+
+/* ── HEADER ── */
+#hdr{
+  background:linear-gradient(140deg,var(--deep) 0%,var(--mid) 60%,var(--soft) 100%);
+  color:var(--white);text-align:center;padding:28px 20px 20px;
+  box-shadow:0 3px 18px rgba(0,0,0,.22);
+}
+.hdr-emblem{
+  width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.1);
+  border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  font-size:34px;margin:0 auto 10px;
+}
+#hdr h1{font-family:'Playfair Display',serif;font-size:clamp(19px,4vw,33px);line-height:1.25;text-shadow:0 2px 10px rgba(0,0,0,.3)}
+#hdr .motto{font-size:13px;color:var(--pale);margin-top:5px;font-style:italic;letter-spacing:.5px}
+
+/* ── NAV ── */
+nav{
+  background:var(--ink);display:flex;flex-wrap:wrap;justify-content:center;
+  gap:2px;padding:6px 8px;position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 14px rgba(0,0,0,.25);
+}
+nav button{
+  background:none;border:none;color:var(--pale);
+  padding:8px 13px;border-radius:7px;cursor:pointer;
+  font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;
+  transition:background .18s,color .18s;
+}
+nav button:hover{background:var(--mid);color:#fff}
+nav button.cur{background:var(--gold);color:var(--ink)}
+
+/* ── ANNOUNCEMENT ── */
+.marquee-bar{
+  background:var(--gold);color:var(--ink);
+  padding:8px 16px;font-size:12.5px;font-weight:700;
+  display:flex;align-items:center;gap:10px;overflow:hidden;
+}
+.marquee-bar .scroll{flex:1;overflow:hidden;white-space:nowrap}
+.marquee-bar .scroll span{display:inline-block;animation:scroll 28s linear infinite}
+@keyframes scroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+
+/* ── WRAPPER ── */
+.wrap{max-width:1080px;margin:0 auto;padding:36px 18px 40px}
+
+/* ── PAGE HEADING ── */
+.ph{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(21px,3.5vw,32px);color:var(--deep);
+  padding-left:16px;border-left:5px solid var(--gold);
+  margin-bottom:28px;line-height:1.2;
+}
+
+/* ── CLOCK CARD ── */
+.clk-card{
+  background:var(--deep);border-radius:var(--r);
+  padding:16px 22px;margin-bottom:26px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+.clk-time{font-family:monospace;font-size:clamp(22px,5vw,36px);font-weight:900;color:var(--gold);letter-spacing:2px}
+.clk-date{font-size:13px;color:var(--pale)}
+.clk-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* ── CARD ── */
+.card{background:var(--white);border-radius:var(--r);box-shadow:var(--card-shadow);padding:24px 26px;margin-bottom:22px}
+.card h3{color:var(--deep);margin-bottom:12px;font-size:17px}
+.card p,.card li{font-size:14.5px;line-height:1.75;color:#2c4a6a}
+.card ul{padding-left:22px}
+
+/* ── GRID ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.g4{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+@media(max-width:660px){.g2{grid-template-columns:1fr}}
+
+/* ── VALUE CARDS ── */
+.vc{background:var(--white);border-radius:var(--r);box-shadow:var(--card-shadow);
+    padding:22px 18px;border-top:4px solid var(--mid);transition:transform .2s}
+.vc:hover{transform:translateY(-4px)}
+.vc .ico{font-size:30px;margin-bottom:10px}
+.vc h4{color:var(--deep);font-size:15px;margin-bottom:6px}
+.vc p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(140deg,var(--deep),var(--mid) 55%,var(--soft));
+  color:#fff;padding:56px 24px 46px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 75% 25%,rgba(255,255,255,.07),transparent 60%)}
+.hero h2{font-family:'Playfair Display',serif;font-size:clamp(22px,4.5vw,42px);
+  margin-bottom:16px;text-shadow:0 2px 14px rgba(0,0,0,.25);line-height:1.2}
+.hero p{font-size:15px;color:var(--pale);max-width:640px;margin:0 auto 26px;line-height:1.7}
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-g{background:var(--gold);color:var(--ink);border:none;padding:12px 30px;
+  border-radius:28px;font-weight:800;font-size:14px;cursor:pointer;
+  font-family:'Nunito',sans-serif;transition:transform .15s,box-shadow .15s}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(240,165,0,.4)}
+.btn-o{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);
+  padding:12px 28px;border-radius:28px;font-weight:700;font-size:14px;cursor:pointer;
+  font-family:'Nunito',sans-serif;transition:background .2s}
+.btn-o:hover{background:rgba(255,255,255,.12)}
+
+/* ── BADGE ── */
+.bdg{display:inline-block;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;margin:3px 2px}
+.bdg-b{background:var(--pale);color:var(--deep)}
+.bdg-g{background:var(--gold);color:var(--ink)}
+.bdg-gr{background:#d4f8e8;color:#1a6e42}
+
+/* ── STAFF GRID ── */
+.staff-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:18px}
+.sc{background:var(--white);border-radius:var(--r);box-shadow:var(--card-shadow);
+    text-align:center;padding:26px 16px 20px;transition:transform .2s}
+.sc:hover{transform:translateY(-4px)}
+.sc-av{width:78px;height:78px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mid),var(--soft));
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;margin:0 auto 12px;border:3px solid var(--pale)}
+.sc h4{color:var(--deep);font-size:15px}
+.sc .role{font-size:12px;color:var(--mid);font-weight:700;margin:4px 0}
+.sc .qual{font-size:12px;color:var(--muted)}
+
+/* ── GALLERY ── */
+.gi{
+  background:var(--mid);border-radius:12px;aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+  font-size:44px;cursor:pointer;transition:transform .2s,box-shadow .2s;
+  box-shadow:var(--card-shadow);position:relative;overflow:hidden;
+}
+.gi:hover{transform:scale(1.04);box-shadow:0 10px 32px rgba(13,43,78,.25)}
+.gi .cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(10,37,64,.78);color:#fff;
+  font-size:11px;font-weight:700;padding:7px 10px;text-align:center;
+}
+
+/* ── CONTACT ── */
+.cf label{display:block;font-size:13px;font-weight:700;color:var(--mid);margin-bottom:5px;margin-top:14px}
+.cf input,.cf textarea,.cf select{
+  width:100%;padding:11px 14px;border:1.5px solid var(--pale);border-radius:9px;
+  font-size:14px;font-family:'Nunito',sans-serif;color:var(--ink);
+  background:var(--sky);transition:border-color .2s;
+}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:var(--mid)}
+.cf textarea{height:110px;resize:vertical}
+.cf .sbtn{
+  margin-top:16px;background:var(--mid);color:#fff;border:none;
+  padding:12px 32px;border-radius:28px;font-size:14px;font-weight:800;
+  cursor:pointer;font-family:'Nunito',sans-serif;transition:background .2s;
+}
+.cf .sbtn:hover{background:var(--soft)}
+.ci{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.ci-ic{width:42px;height:42px;flex-shrink:0;background:var(--pale);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:18px}
+.ci strong{display:block;color:var(--deep);font-size:13px}
+.ci span{font-size:13px;color:#2c4a6a}
+
+/* ── LOCATION MAP ── */
+.mapbox{
+  width:100%;height:290px;background:linear-gradient(135deg,#c8dff2,#a0c4e0);
+  border-radius:var(--r);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;margin-bottom:22px;border:2px dashed var(--soft);
+  gap:10px;font-size:14px;color:var(--deep);
+}
+.dc{background:var(--white);border-radius:var(--r);padding:18px;
+    box-shadow:var(--card-shadow);border-left:4px solid var(--mid)}
+.dc h4{color:var(--deep);margin-bottom:6px;font-size:14px}
+.dc p{font-size:13px;color:#2c4a6a;line-height:1.6}
+
+/* ── FAQ ── */
+.faq-item{background:var(--white);border-radius:var(--r);margin-bottom:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:16px 20px;background:none;border:none;
+  font-family:'Nunito',sans-serif;font-size:14.5px;font-weight:700;color:var(--deep);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  transition:background .15s}
+.faq-q:hover{background:var(--pale)}
+.faq-q .arr{font-size:18px;transition:transform .22s;flex-shrink:0}
+.faq-q.op .arr{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 20px 16px;font-size:13.5px;color:#2c4a6a;
+  line-height:1.75;border-top:1px solid var(--pale)}
+.faq-a.op{display:block}
+
+/* ── ABOUT SECTIONS ── */
+.ab-motto{
+  background:linear-gradient(135deg,var(--deep),var(--mid));
+  color:#fff;border-radius:var(--r);padding:28px 30px;margin-bottom:22px;text-align:center;
+}
+.ab-motto .word{font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,40px);
+  color:var(--gold);font-weight:900;margin-bottom:6px}
+.ab-motto p{font-size:14.5px;color:var(--pale);line-height:1.6}
+.mission-block{
+  background:var(--white);border-radius:var(--r);box-shadow:var(--card-shadow);
+  padding:24px;margin-bottom:22px;
+}
+.mission-block h3{color:var(--deep);margin-bottom:16px;font-size:18px;
+  border-bottom:2px solid var(--pale);padding-bottom:8px}
+.mb-row{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
+.mb-num{
+  background:var(--gold);color:var(--ink);border-radius:50%;
+  width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;
+  justify-content:center;font-weight:900;font-size:14px;margin-top:2px;
+}
+.mb-content strong{display:block;color:var(--deep);font-size:14px;margin-bottom:2px}
+.mb-content p{font-size:13.5px;color:#2c4a6a;line-height:1.6}
+
+.cv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:22px}
+.cv-card{
+  background:var(--white);border-radius:var(--r);box-shadow:var(--card-shadow);
+  padding:20px;border-top:4px solid var(--mid);
+}
+.cv-card .cv-num{font-size:28px;font-weight:900;color:var(--gold);font-family:'Playfair Display',serif}
+.cv-card h4{color:var(--deep);font-size:15px;margin:4px 0 6px}
+.cv-card p{font-size:13px;color:var(--muted);line-height:1.5}
+
+.obj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:22px}
+.obj-card{
+  background:var(--white);border-radius:var(--r);box-shadow:var(--card-shadow);
+  padding:20px;display:flex;gap:14px;align-items:flex-start;
+}
+.obj-icon{font-size:26px;flex-shrink:0}
+.obj-card p{font-size:13.5px;color:#2c4a6a;line-height:1.6}
+
+/* ── FEES TABLE ── */
+.fee-tbl{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}
+.fee-tbl th{background:var(--mid);color:#fff;padding:10px 14px;text-align:left;font-weight:700}
+.fee-tbl td{padding:10px 14px;border-bottom:1px solid var(--pale);color:#2c4a6a}
+.fee-tbl tr:nth-child(even) td{background:var(--sky)}
+.fee-tbl .total-row td{font-weight:800;background:var(--pale);color:var(--deep)}
+
+/* ── CALCULATOR ── */
+.calc-wrap{
+  background:var(--deep);color:#fff;border-radius:var(--r);padding:26px;margin-top:0;
+}
+.calc-wrap h3{color:var(--gold);margin-bottom:18px;font-size:17px;display:flex;align-items:center;gap:8px}
+.calc-wrap label{font-size:12px;font-weight:700;color:var(--pale);display:block;margin-bottom:5px;margin-top:14px}
+.calc-wrap select,.calc-wrap input{
+  width:100%;padding:10px 12px;border:none;border-radius:8px;font-size:14px;
+  font-family:'Nunito',sans-serif;background:rgba(255,255,255,.13);color:#fff;
+}
+.calc-wrap select option{background:var(--deep)}
+.calc-wrap .extras{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.calc-wrap .extras label{
+  color:#fff;font-weight:400;font-size:13px;margin:0;
+  display:flex;align-items:center;gap:5px;
+}
+.calc-wrap .extras input[type=checkbox]{width:auto;margin:0}
+.calc-btn{
+  margin-top:18px;width:100%;background:var(--gold);color:var(--ink);border:none;
+  padding:12px;border-radius:9px;font-size:15px;font-weight:800;cursor:pointer;
+  font-family:'Nunito',sans-serif;transition:background .2s;
+}
+.calc-btn:hover{background:var(--gold2)}
+.calc-out{
+  display:none;margin-top:16px;background:rgba(255,255,255,.1);
+  border-radius:10px;padding:16px;
+}
+.calc-out .grand{font-size:26px;font-weight:900;color:var(--gold)}
+.calc-out .sub-lbl{font-size:11px;color:var(--pale);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.calc-out .breakdown{font-size:12.5px;color:var(--pale);margin-top:12px;line-height:1.9;white-space:pre}
+
+/* ── EDITOR ── */
+.ed-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.ed-tab{
+  padding:7px 16px;border-radius:8px;background:var(--pale);color:var(--deep);
+  border:none;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;
+  transition:background .15s;
+}
+.ed-tab.cur{background:var(--mid);color:#fff}
+.ed-pane{display:none}
+.ed-pane.cur{display:block}
+.ed-pane textarea{
+  width:100%;height:280px;background:#071420;color:#7ec8f0;border:none;
+  border-radius:10px;padding:16px;font-family:'Courier New',monospace;font-size:12.5px;
+  resize:vertical;line-height:1.65;
+}
+.ed-acts{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.ed-acts button{
+  padding:9px 20px;border-radius:9px;border:none;font-family:'Nunito',sans-serif;
+  font-size:13px;font-weight:700;cursor:pointer;transition:background .2s;
+}
+.ea-apply{background:var(--green);color:#fff}
+.ea-reset{background:var(--pale);color:var(--deep)}
+.ea-dl{background:var(--mid);color:#fff}
+#ed-fb{
+  display:none;margin-top:12px;padding:11px 14px;border-radius:9px;
+  font-size:13px;font-weight:700;
+}
+
+/* ── LOGIN MODAL ── */
+.overlay{
+  display:none;position:fixed;inset:0;background:rgba(7,20,40,.76);
+  z-index:9999;align-items:center;justify-content:center;
+}
+.overlay.open{display:flex}
+.modal{
+  background:#fff;border-radius:18px;padding:38px 32px 28px;width:92%;max-width:430px;
+  box-shadow:0 16px 60px rgba(0,0,0,.35);position:relative;animation:popIn .25s ease;
+}
+@keyframes popIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-x{position:absolute;top:14px;right:18px;font-size:22px;cursor:pointer;
+  background:none;border:none;color:var(--muted)}
+.modal h2{color:var(--deep);margin-bottom:5px;font-size:21px}
+.modal .ms{color:var(--muted);font-size:13px;margin-bottom:22px}
+.modal label{display:block;font-size:13px;font-weight:700;color:var(--mid);margin-bottom:5px}
+.modal input,.modal select{
+  width:100%;padding:11px 14px;border:1.5px solid var(--pale);border-radius:9px;
+  font-size:14px;font-family:'Nunito',sans-serif;color:var(--ink);
+  margin-bottom:16px;background:var(--sky);transition:border-color .2s;
+}
+.modal input:focus,.modal select:focus{outline:none;border-color:var(--mid)}
+.btn-login{
+  width:100%;background:var(--mid);color:#fff;border:none;padding:13px;
+  border-radius:9px;font-size:15px;font-weight:800;cursor:pointer;
+  font-family:'Nunito',sans-serif;transition:background .2s;
+}
+.btn-login:hover{background:var(--soft)}
+#lr{margin-top:14px;padding:12px;border-radius:9px;font-size:13px;font-weight:600;display:none}
+#lr.ok{background:#d4f8e8;color:#1a6e42;display:block}
+#lr.no{background:#fde8e8;color:#9a1a1a;display:block}
+#dash{display:none;background:var(--sky);border-radius:12px;padding:20px;margin-top:18px;border:2px solid var(--pale)}
+#dash h3{color:var(--deep);margin-bottom:14px;font-size:16px}
+.li-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px}
+.li-chip{background:#fff;border-radius:9px;padding:12px 14px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.li-chip .ll{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.li-chip .lv{font-size:15px;font-weight:800;color:var(--deep);margin-top:2px}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:var(--pale);text-align:center;
+  padding:24px 18px;font-size:13px;
+}
+footer strong{color:var(--gold)}
+footer .fs{font-size:11px;color:var(--muted);margin-top:5px}
+
+@media(max-width:520px){
+  nav button{padding:7px 8px;font-size:11.5px}
+  .wrap{padding:22px 12px 28px}
+  .hero{padding:36px 14px 30px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP STRIP ═══ -->
+<div id="topstrip">
+  <span> Anai Ober, Anai ward, Lira City West, Lira City, Uganda .<br>greybellprimaryschool@gmail.com<br>+265 783 191 626</span>
+  <span class="ts-clock" id="clk-top">--:--:--</span>
+  <button class="ts-lin-btn" onclick="openLIN()"><a href ="learner.pdf">LIN Login — Learner Details</a></button>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<div id="hdr">
+  <div class="hdr-emblem"><img src="lo.jpg" width="130" height="100"></div>
+  <h1>Greybell Nursery &amp; Primary School</h1>
+  <p class="motto">"Live in Excellence" &nbsp;·&nbsp; Empowering Young Minds to Excel, Innovate &amp; Serve</p>
+<hr color="black" size="8">
+<hr color="yellow" size="8">
+<hr color="red" size="8">
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="mainnav">
+  <button class="cur" onclick="go('home',this)"> Home</button>
+  <button onclick="go('about',this)"> About</button>
+  <button onclick="go('staff',this)"> Staff</button>
+  <button onclick="go('gallery',this)"> Gallery</button>
+  <button onclick="go('contact',this)"> Contact</button>
+  <button onclick="go('location',this)"> Location</button>
+  <button onclick="go('faq',this)"> FAQ</button>
+</nav>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-bar">
+  
+  <div class="scroll">
+    <span>Welcome.! Feel Free to Interact with us.</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════════════════════════ -->
+<div id="pg-home" class="pg on">
+  <div class="hero">
+    <h2>Welcome to Greybell Nursery &amp; Primary School</h2>
+    <p>A place where every child discovers their brilliance. We nurture, we excel, we serve — building tomorrow's leaders through love, learning and excellence.</p>
+    <div class="hbtns">
+      <button class="btn-g" onclick="go('about',document.querySelectorAll('nav button')[1])">Discover Our School</button>
+      <button class="btn-o" onclick="openLIN()"> Check Learner Details</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="clk-card">
+      <div>
+        <div class="clk-label">Current Time</div>
+        <div class="clk-time" id="clk-home">--:--:--</div>
+      </div>
+      <div style="text-align:right">
+        <div class="clk-label">Today</div>
+        <div class="clk-date" id="dt-home"></div>
+      </div>
+    </div>
+<img src="sch.jpg" width="180" height="200">
+    <h2 class="ph">Our Core Values</h2>
+    <div class="g3" style="margin-bottom:32px">
+      <div class="vc"><div class="ico"></div><h4>Excellence</h4><p>Strive for academic and personal best in everything we do.</p></div>
+      <div class="vc"><div class="ico"></div><h4>Integrity</h4><p>Uphold honesty, transparency and moral principles always.</p></div>
+      <div class="vc"><div class="ico"></div><h4>Respect</h4><p>Foster a culture of inclusivity, empathy and kindness.</p></div>
+      <div class="vc"><div class="ico"></div><h4>Innovation</h4><p>Encourage creativity and exploration in every learner.</p></div>
+    </div>
+
+    <h2 class="ph">Quick Access</h2>
+    <div class="g4" style="margin-bottom:10px">
+      <div class="vc" onclick="go('about',document.querySelectorAll('nav button')[1])" style="cursor:pointer"><div class="ico"></div><h4>About Us</h4><p>Our mission, vision, values &amp; fees.</p></div>
+      <div class="vc" onclick="go('staff',document.querySelectorAll('nav button')[2])" style="cursor:pointer"><div class="ico"></div><h4>Our Staff</h4><p>Meet our experienced educators.</p></div>
+      <div class="vc" onclick="go('gallery',document.querySelectorAll('nav button')[3])" style="cursor:pointer"><div class="ico"></div><h4>Gallery</h4><p>Photos from school life &amp; events.</p></div>
+      <div class="vc" onclick="openLIN()" style="cursor:pointer"><div class="ico"></div><h4>LIN Portal</h4><p>View your learner's records online.</p></div>
+    </div>
+  </div>
+</div>
+<img src="director.PNG" width="160" height="200">
+
+<!-- ══════════════════════════════════════════════════════════
+     ABOUT PAGE  — PDF CONTENT USED HERE
+══════════════════════════════════════════════════════════ -->
+<div id="pg-about" class="pg">
+  <div class="wrap">
+    <h2 class="ph">About Greybell School</h2>
+
+    <div class="clk-card">
+      <div><div class="clk-label">Current Time</div><div class="clk-time" id="clk-about">--:--:--</div></div>
+      <div style="text-align:right"><div class="clk-label">Today</div><div class="clk-date" id="dt-about"></div></div>
+    </div>
+
+    <!-- MOTTO -->
+    <div class="ab-motto">
+      <div class="word">"Live in Excellence"</div>
+      <p>The guiding motto of Greybell Nursery &amp; Primary School — a promise we make to every child, every day.</p>
+    </div>
+
+    <!-- VISION -->
+    <div class="mission-block">
+      <h3> Vision</h3>
+      <p style="font-size:15px;color:#2c4a6a;line-height:1.75">
+        Empowering young minds to <strong>excel</strong>, <strong>innovate</strong> and <strong>serve</strong> with excellence.
+      </p>
+    </div>
+
+    <!-- MISSION -->
+    <div class="mission-block">
+      <h3> Mission</h3>
+      <div class="mb-row">
+        <div class="mb-num">1</div>
+        <div class="mb-content">
+          <strong>Nurture</strong>
+          <p>Provide a supportive environment for holistic growth.</p>
+        </div>
+      </div>
+      <div class="mb-row">
+        <div class="mb-num">2</div>
+        <div class="mb-content">
+          <strong>Excel</strong>
+          <p>Pursue academic excellence and character development.</p>
+        </div>
+      </div>
+      <div class="mb-row">
+        <div class="mb-num">3</div>
+        <div class="mb-content">
+          <strong>Serve</strong>
+          <p>Cultivate a culture of empathy, moral principle, kindness and community service.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORE VALUES -->
+    <h2 class="ph">Core Values</h2>
+    <div class="cv-grid">
+      <div class="cv-card">
+        <div class="cv-num">1</div>
+        <h4>Excellence</h4>
+        <p>Strive for academic and personal best in everything we do.</p>
+      </div>
+      <div class="cv-card">
+        <div class="cv-num">2</div>
+        <h4>Integrity</h4>
+        <p>Uphold honesty, transparency and moral principles at all times.</p>
+      </div>
+      <div class="cv-card">
+        <div class="cv-num">3</div>
+        <h4>Respect</h4>
+        <p>Foster a culture of inclusivity, empathy and kindness.</p>
+      </div>
+      <div class="cv-card">
+        <div class="cv-num">4</div>
+        <h4>Innovation</h4>
+        <p>Encourage creativity and exploration in every learner.</p>
+      </div>
+    </div>
+
+    <!-- OBJECTIVES -->
+    <h2 class="ph">Objectives</h2>
+    <div class="obj-grid" style="margin-bottom:32px">
+      <div class="obj-card"><div class="obj-icon"></div><p>Provide quality education that prepares pupils for future success.</p></div>
+      <div class="obj-card"><div class="obj-icon"></div><p>Develop well-rounded individuals with strong character and values.</p></div>
+      <div class="obj-card"><div class="obj-icon"></div><p>Foster love for learning, creativity and innovation.</p></div>
+      <div class="obj-card"><div class="obj-icon"></div><p>Build a supportive community that values diversity and inclusivity.</p></div>
+    </div>
+        <p style="font-size:11.5px;color:var(--muted);margin-top:10px">* Fees is separate &amp; activity levy. Uniform purchased separately.</p>
+
+        <div style="margin-top:18px;background:var(--sky);border-radius:10px;padding:14px">
+          <p style="font-size:13px;font-weight:700;color:var(--deep);margin-bottom:8px"> Payment Channels</p>
+          <p style="font-size:13px;color:#2c4a6a;line-height:1.7">
+            Mobile Money (MTN / Vodafone Cash) &nbsp;·&nbsp; Bank Transfer &nbsp;·&nbsp; Cash at School Accounts Office<br>
+            <em>Always request an official receipt. Do not pay anyone other than school accounts staff.</em>
+          </p>
+        </div>
+      </div>
+
+      
+                <div class="calc-out" id="calc-out">
+          <div class="sub-lbl">Estimated Total</div>
+          <div class="grand" id="calc-grand"></div>
+          <div class="breakdown" id="calc-bd"></div>
+          <div style="margin-top:14px;font-size:11.5px;color:rgba(255,255,255,.5)">
+            * This is an estimate. Contact the school office for the confirmed figure.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     STAFF PAGE
+══════════════════════════════════════════════════════════ -->
+<div id="pg-staff" class="pg">
+  <div class="wrap">
+    <h2 class="ph">Staff Profiles</h2>
+    <div class="clk-card">
+      <div><div class="clk-label">Current Time</div><div class="clk-time" id="clk-staff">--:--:--</div></div>
+      <div style="text-align:right"><div class="clk-label">Today</div><div class="clk-date" id="dt-staff"></div></div>
+    </div>
+    <p style="margin-bottom:24px;color:#2c4a6a">Our team of qualified and passionate educators is committed to bringing out the best in every learner at Greybell.</p>
+    <div class="staff-grid">
+
+  <div class="sc"><div class="sc-av"><img src="director2.PNG" width="100" height="100"></div><h4>Director of the School<br>greybellprimaryschool@gmail.com</div
+<div class="sc"><div class="sc-av"><img src="man.jpg" width="100" height="100"></div><h4><center>Team Management</div>   <div class="sc"><div class="sc-av"><img src="himotey.JPG" width="100" height="100"></div><h4>Mr. Himotrey</h4><div class="role">Head Teacher</div><div class="qual">+256 789 563 620</div><div style="margin-top:8px"><span class="bdg bdg-g">Administration</span></div></div>
+      <div class="sc"><div class="sc-av"><img src="brenda.jpg" width="100" height="100"></div><h4>Mrs.Anyango Brenda </h4><div class="role">Head teacher nursery section </div><div class="qual">+2567620535885</div><div style="margin-top:8px"><span class="bdg bdg-b">email</span></div></div>
+      <div class="sc"><div class="sc-av"><img src="mi.png" width="100" height="100"></div><h4>Mr. Okello Boniface</h4><div class="role">Class Teacher P.3</div><div class="qual">+256 789 563 620</div><div style="margin-top:8px"><span class="bdg bdg-b">Bonifaceokello2002@gmail.com</span></div></div>
+      <div class="sc"><div class="sc-av"><img src="scovia.JPG" width="100" height="100"></div><h4>Mrs. Agoa Scovia</h4><div class="role">class Teacher </div><div class="qual">+256773293550</div><div style="margin-top:8px"><span class="bdg bdg-b">email</span></div></div>
+      <div class="sc"><div class="sc-av"><img src="tr.jpg" width="100" height="100"></div><h4>Mrs. Adero Loy</h4><div class="role">class Teacher P.2</div><div class="qual">+256771536891</div><div style="margin-top:8px"><span class="bdg bdg-b">email</span></div></div>
+      <div class="sc"><div class="sc-av"><img src="moses.jpg" width="100" height="100"></div><h4>Mr. Moses Samuel</h4><div class="role">Class Teacher P.1</div><div class="qual">+256 775700256</div><div style="margin-top:8px"><span class="bdg bdg-b">📨 email</span></div></div>
+      <div class="sc"><div class="sc-av"><img src="mark.JPG" width="100" height="100"></div><h4>Mr.Okae Mark</h4><div class="role">Director of Studies</div><div class="qual">+256 766055285</div><div style="margin-top:8px"><span class="bdg bdg-gr">email</span></div></div>
+     <div class="sc"><div class="sc-av"><img src="ch.jpg" width="100" height="100"></div><h4>Mr.Owiny Christopher</h4><div class="role">Director of Studies Nursery section</div><div class="qual">+256 766055285</div><div style="margin-top:8px"><span class="bdg bdg-gr">email christipherowiny@gmail.com</span></div></div>
+ 
+      <div class="sc"><div class="sc-av"><img src="zinabu.jpg" width="100" height="100"></div><h4>Mrs. Akullu Zainabu</h4><div class="role">class teacher baby class</div><div class="qual">+256777377012</div></div>
+     
+ <div class="sc"><div class="sc-av"><img src="emma.jpg" width="100" height="100"></div><h4>Mr. Ogwal Emmanuel</h4>
+<div class="role">class teacher p.6 class</div><div class="qual">+256.....</div></div>
+     <div class="sc"><div class="sc-av"><img src="oscar.jpg" width="100" height="100"></div><h4>Mr. Allele Oscar</h4>
+<div class="role"> teacher social study</div><div class="qual">+256792166536</div></div>
+    <div class="sc"><div class="sc-av"><img src="vicky.jpg" width="100" height="100"></div><h4>Mrs. Auma Vicky</h4>
+<div class="role"> Nursery teacher </div><div class="qual">+256792888446</div></div>
+    <div class="sc"><div class="sc-av"><img src="win.JPG" width="100" height="100"></div><h4>Mrs. Acomo winnie</h4>
+<div class="role"> Nursery teacher </div><div class="qual">+256792888446</div></div>
+
+    <div class="sc"><div class="sc-av"><img src="Denis.jpg" width="100" height="100"></div><h4>Mr.Omara Denish</h4><div class="role">Burser</div><div class="qual">+256760000459</div><div style="margin-top:8px"><span class="bdg bdg-gr">email </span></div></div>
+
+
+     <div class="sc"><div class="sc-av"><img src="manage.jpeg" width="100" height="100"></div><h4>team management</div> 
+ 
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     GALLERY PAGE
+══════════════════════════════════════════════════════════ -->
+<div id="pg-gallery" class="pg">
+  <div class="wrap">
+    <h2 class="ph">School Gallery</h2>
+    <div class="clk-card">
+      <div><div class="clk-label">Current Time</div><div class="clk-time" id="clk-gallery">--:--:--</div></div>
+      <div style="text-align:right"><div class="clk-label">Today</div><div class="clk-date" id="dt-gallery"></div></div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+      <button class="bdg bdg-g" style="cursor:pointer;border:none;font-family:'Nunito',sans-serif" onclick="filt('all')">All</button>
+      <button class="bdg bdg-b" style="cursor:pointer;border:none;font-family:'Nunito',sans-serif" onclick="filt('class')">Classroom</button>
+      <button class="bdg bdg-b" style="cursor:pointer;border:none;font-family:'Nunito',sans-serif" onclick="filt('sports')">Sports</button>
+      <button class="bdg bdg-b" style="cursor:pointer;border:none;font-family:'Nunito',sans-serif" onclick="filt('events')">Events</button>
+      <button class="bdg bdg-b" style="cursor:pointer;border:none;font-family:'Nunito',sans-serif" onclick="filt('arts')">Arts</button>
+    </div>
+    <div class="g4" id="gal-grid">
+      <div class="gi" data-c="class"  style="background:linear-gradient(135deg,#1a4a7a,#2e6da4)"><img src="child.jpg" width="270" height="193"><div class="cap">Library Reading Session</div></div>
+      <div class="gi" data-c="sports" style="background:linear-gradient(135deg,#1a5c2e,#27ae60)"><img src="sport.JPG" width="270" heigth="193"><div class="cap">Inter-Class Football 2026</div></div>
+      <div class="gi" data-c="events" style="background:linear-gradient(135deg,#4a1276,#8e44ad)"><img src="st.jpg" width="270" heigth="193"><div class="cap">Graduation Ceremony 2025</div></div>
+      <div class="gi" data-c="class"  style="background:linear-gradient(135deg,#0d4b6e,#1a7aad)"><img src="st1.jpg" width="270" heigth="193"><div class="cap">lower class block </div></div>
+      <div class="gi" data-c="events" style="background:linear-gradient(135deg,#6b4c00,#f0a500)"><img src="cap.jpg" width="270" heigth="193"><div class="cap">Excellence Awards Night</div></div>
+      <div class="gi" data-c="sports" style="background:linear-gradient(135deg,#145a32,#2ecc71)"><img src="sportg.jpg" width="270" heigth="193"><div class="cap">Annual Sports Day 2025</div></div>
+      <div class="gi" data-c="arts"   style="background:linear-gradient(135deg,#6c3483,#a569bd)"><img src="cult.jpg" width="270" heigth="193"><div class="cap">Cultural Day Drama</div></div>
+
+      <div class="gi" data-c="events" style="background:linear-gradient(135deg,#6e2f1a,#e67e22)"><img src="staff.jpeg" width="270" height="193"><div class="cap">School Anniversary</div></div>
+      <div class="gi" data-c="event" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="man.jpg" width="270" height="193"><div class="cap">Parent Day</div></div>                                                                                 <div class="gi" data-c="staff" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="sch.jpg" width="270" height="193"><div class="cap">staff 2026</div></div>
+   <div class="gi" data-c="Pupils" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="child.jpg" width="270" height="193"><div class="cap">pupils 2026</div></div>
+   <div class="gi" data-c="Management committee" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="manage.jpeg" width="270" height="193"><div class="cap">management committee</div></div>
+   <div class="gi" data-c="Parents' meeting" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="parent.png" width="270" height="193"><div class="cap">Parent Meeting</div></div>
+   <div class="gi" data-c="Assembly ground" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="assembly.JPG" width="270" height="193"><div class="cap">Assembly ground</div></div>
+    <div class="gi" data-c="Nursery pupils" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="nursery2.jpg" width="270" height="193"><div class="cap">Nursery pupils</div></div>
+   <div class="gi" data-c="Teacher's Team" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="sport2.JPG" width="270" height="193"><div class="cap">Teacher's Team</div></div>
+   <div class="gi" data-c="Director and the family" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="director.PNG" width="270" height="193"><div class="cap">Director and the family</div></div>
+
+<div class="gi" data-c="Director of School" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="director2.PNG" width="270" height="193"><div class="cap">Director of School</div></div>
+<div class="gi" data-c="Director of School" style="background:linear-gradient(135deg,#0b5345,#1abc9c)"><img src="bonny.png" width="270" height="193"><div class="cap"></div></div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════════════════════════════ -->
+<div id="pg-contact" class="pg">
+  <div class="wrap">
+    <h2 class="ph">Contact Us</h2>
+    <div class="clk-card">
+      <div><div class="clk-label">Current Time</div><div class="clk-time" id="clk-contact">--:--:--</div></div>
+      <div style="text-align:right"><div class="clk-label">Today</div><div class="clk-date" id="dt-contact"></div></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Send a Message</h3>
+        <div class="cf">
+          <label>Full Name</label>
+          <input id="cf-n" type="text" placeholder="Your full name">
+          <label>Email Address</label>
+          <input id="cf-e" type="email" placeholder="your@email.com">
+          <label>Subject</label>
+          <select id="cf-s">
+            <option>Admissions Inquiry</option>
+            <option>Fee Payment</option>
+            <option>Learner Concern</option>
+            <option>General Inquiry</option>
+            <option>Complaint / Feedback</option>
+          </select>
+          <label>Message</label>
+          
+           <textarea id="cf-m" placeholder="Write your message here..."></textarea>
+          <button class="sbtn" onclick="sendMsg()">Send Message 📨</button>
+          <div id="cf-ok" style="display:none;background:#d4f8e8;color:#1a6e42;padding:12px;border-radius:9px;margin-top:12px;font-size:13px;font-weight:700">
+            ✅ Message sent! We will respond within 24 hours.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📞 Contact Details</h3>
+        <div class="ci"><div class="ci-ic">🌆 </div><div><strong>Address</strong><span>Anai Ober, Anai Ward, Lira City West, Lira City,<br>Uganda</span></div></div>
+        <div class="ci"><div class="ci-ic">📞</div><div><strong>Phone</strong><span>+256 783 191 626<br>+256 764 199 556<br>+256779755402<br>+256773337409</span></div></div>
+        <div class="ci"><div class="ci-ic">✉️</div><div><strong>Email</strong><span>greybellprimaryschool@gmail.com<br>+265 783 191 626</span></div></div>
+        <div class="ci"><div class="ci-ic">🕐</div><div><strong>Office Hours</strong><span>Mon – Fri: 7:00 AM – 5:00 PM<br>Saturday: 8:00 AM – 12:00 PM</span></div></div>
+        <div class="ci"><div class="ci-ic">🌐</div><div><strong>Website</strong><span>www.greybellschool.edu.ug</span></div></div>
+        <div style="margin-top:16px">
+        <button > Thanks</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     LOCATION PAGE
+══════════════════════════════════════════════════════════ -->
+<div id="pg-location" class="pg">
+  <div class="wrap">
+    <h2 class="ph">Find Us</h2>
+    <div class="clk-card">
+      <div><div class="clk-label">Current Time</div><div class="clk-time" id="clk-location">--:--:--</div></div>
+      <div style="text-align:right"><div class="clk-label">Today</div><div class="clk-date" id="dt-location"></div></div>
+    </div>
+    <div class="mapbox">
+      <span style="font-size:52px"><a href="2°14'06.21"N 32°51'57.18"E">🗾</a></span>
+      <strong>Greybell Nursery &amp; Primary School</strong>
+      <span> Located A long king Jame's secondary school Road, Anai Ober, Lira city west Division, Lira city</span>
+      <button class="btn-g" onclick="alert('Redirecting to Google Maps...')">🗾<a href ="https://earth.google.com/earth/d/1mAaDFW-xTeWZxZrKdtCJZKOshFtQlfWs">Open in Google Maps</a></button>
+    </div>
+    <div class="card" style="margin-bottom:22px">
+      <h3> Exact Address</h3>
+      <p><strong>Greybell Nursery &amp; Primary School</strong><br>Anai Ober, Lira city west Division, Lira city</strong></p>
+    </div>
+    <h2 class="ph">Getting Here</h2>
+    <div class="g2" style="margin-bottom:10px">
+      <div class="dc"><h4> By Bus </h4><p>By bus from corner kakoge, Lira city asks any person about us</p></div>
+      <div class="dc"><h4> By car</h4><p>By car From corner Kakoge, Lira City asks any person about us</p></div>
+      <div class="dc"><h4> By Motorbike</h4><p>Ask for Greybell Primary School from corner Kakoge</p></div>
+      <div class="dc"><h4> On Foot</h4><p>From Omodo market to Greybell is walkable</p></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FAQ PAGE
+══════════════════════════════════════════════════════════ -->
+<div id="pg-faq" class="pg">
+    <div id="faq-list"></div>
+  <div class="wrap">
+    <h2 class="ph">Frequently Asked Questions</h2>
+    <div class="clk-card">
+      <div><div class="clk-label">Current Time</div><div class="clk-time" id="clk-faq">--:--:--</div></div>
+      <div style="text-align:right"><div class="clk-label">Today</div><div class="clk-date" id="dt-faq"></div></div>
+    </div>
+    <div class="card" style="background:var(--deep);text-align:center;margin-top:8px">
+      <p style="color:var(--pale)">Still have a question? &nbsp;
+        <button class="btn-g" onclick="go('contact',document.querySelectorAll('nav button')[4])">Contact Us</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE EDITOR
+══════════════════════════════════════════════════════════ -->
+<div id="pg-editor" class="pg">
+  <div class="wrap">
+    <h2 class="ph">🛠️ Page Editor</h2>
+    <div class="clk-card">
+      <div><div class="clk-label">Current Time</div><div class="clk-time" id="clk-editor">--:--:--</div></div>
+      <div style="text-align:right"><div class="clk-label">Today</div><div class="clk-date" id="dt-editor"></div></div>
+    </div>
+    <div class="card" style="background:#fffbe6;border-left:5px solid var(--gold);margin-bottom:18px">
+      <p>⚠️ <strong>Admin Tool:</strong> Edit each page's inner HTML here. Click <strong>Apply Changes</strong> to preview live, or <strong>Download Page</strong> to save the full website as an HTML file.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:14px">Select a Page to Edit</h3>
+      <div class="ed-tabs" id="ed-tabs"></div>
+      <div id="ed-panes"></div>
+      <div class="ed-acts">
+        <button class="ea-apply" onclick="applyEd()">✅ Apply Changes</button>
+        <button class="ea-reset" onclick="resetEd()">🔄 Reset Page</button>
+        <button class="ea-dl"    onclick="dlPage()">⬇️ Download Full Site</button>
+      </div>
+      <div id="ed-fb"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     LIN MODAL
+══════════════════════════════════════════════════════════ -->
+<div class="overlay" id="lin-overlay">
+  <div class="modal">
+    <button class="modal-x" onclick="closeLIN()">✕</button>
+    <h2> LIN Learner Portal</h2>
+    <p class="ms">Enter your Learner Identification Number (LIN) and NIN to view learner details.</p>
+
+    <label>Learner ID Number (LIN)</label>
+    <input type="text" id="lin-id" placeholder="e.g. " maxlength="14">
+    <label>Parent NIN</label>
+    <input type="password" id="lin-pin" placeholder="NIN">
+    <label>Academic Year</label>
+    <select id="lin-yr">
+      <option>2026</option>
+      <option>2025</option>
+      <option>2024</option>
+    </select>
+    <button class="btn-login" onclick="doLIN()"> View Learner Record</button>
+    <div id="lr"></div>
+
+    <div id="dash">
+      <h3>📋 Learner Record</h3>
+      <div class="li-grid" id="li-grid"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <strong>&copy 2026 Greybell Nursery &amp; Primary School</strong> &nbsp;|&nbsp;
+   greybellprimaryschool@gmail.com<br>+265 783 191 626 &nbsp;·&nbsp; <br><em>"Live in Excellence"</em><br><strong><a href="https://bonifaceokello2002-hash.github.io/Boniface-o.b.f-/">Designers: Boniface &amp; Mathew [+256 789 563 620,<br> +256 783 450 925]</a></strong><br>
+<hr color="black" size="5">
+<hr color="yellow" size="5">
+<hr color="red" size="5">
+</div>
+</footer>
+
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<script>
+/* ── CLOCK ── */
+function tick(){
+  const n=new Date();
+  const t=n.toLocaleTimeString('en-GB');
+  const d=n.toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  ['top','home','about','staff','gallery','contact','location','faq','editor'].forEach(id=>{
+    const ce=document.getElementById('clk-'+id);
+    const de=document.getElementById('dt-'+id);
+    if(ce)ce.textContent=t;
+    if(de)de.textContent=d;
+  });
+}
+tick(); setInterval(tick,1000);
+
+/* ── NAVIGATION ── */
+function go(id,btn){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pg-'+id).classList.add('on');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('cur'));
+  if(btn)btn.classList.add('cur');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── LIN MODAL ── */
+function openLIN(){document.getElementById('lin-overlay').classList.add('open')}
+function closeLIN(){document.getElementById('lin-overlay').classList.remove('open')}
+document.getElementById('lin-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('lin-overlay'))closeLIN()});
+
+const DB={
+  'GB-2024-0042':{name:'Afia Mensah',cls:'Primary 4',dob:'12 Mar 2015',lin:'GB-2024-0042',guardian:'Mrs. Comfort Mensah',fee:'GHS 650',bal:'GHS 0.00',status:'Fully Paid ✅',att:'92%',pos:'2nd / 34',grade:'A'},
+  'GB-2024-0101':{name:'Kwame Asante',cls:'Primary 2',dob:'5 Aug 2017',lin:'GB-2024-0101',guardian:'Mr. Benjamin Asante',fee:'GHS 580',bal:'GHS 290',status:'Half Paid ⚠️',att:'88%',pos:'5th / 30',grade:'B+'},
+  'GB-2023-0019':{name:'Ama Boateng',cls:'KG 2',dob:'22 Jan 2019',lin:'GB-2023-0019',guardian:'Mrs. Yaa Boateng',fee:'GHS 520',bal:'GHS 0.00',status:'Fully Paid ✅',att:'95%',pos:'1st / 25',grade:'A+'},
+};
+
+function doLIN(){
+  const lin=document.getElementById('lin-id').value.trim().toUpperCase();
+  const pin=document.getElementById('lin-pin').value.trim();
+  const lr=document.getElementById('lr');
+  const dash=document.getElementById('dash');
+  lr.className='';lr.style.display='none';dash.style.display='none';
+  if(!lin||!pin){lr.className='no';lr.textContent='⚠️ Please enter your LIN and PIN.';return}
+  if(pin.length<4){lr.className='no';lr.textContent='⚠️ PIN must be 4 digits.';return}
+  if(DB[lin]){
+    const L=DB[lin];
+    lr.className='ok';lr.textContent='✅ Login successful! Record found.';
+    dash.style.display='block';
+    document.getElementById('li-grid').innerHTML=[
+      ['Full Name',L.name],['Class',L.cls],['LIN',L.lin],
+      ['Date of Birth',L.dob],['Guardian',L.guardian],
+      ['Term Fee',L.fee],['Outstanding Balance',L.bal],
+      ['Fee Status',L.status],['Attendance',L.att],
+      ['Class Position',L.pos],['Overall Grade',L.grade],
+    ].map(([k,v])=>`<div class="li-chip"><div class="ll">${k}</div><div class="lv">${v}</div></div>`).join('');
+  } else {
+    lr.className='no';
+    lr.textContent='❌ LIN not found. Contact the school office. (Demo: try GB-2024-0042)';
+    dash.style.display='none';
+  }
+}
+
+/* ── FEES CALCULATOR ── */
+function calcFees(){
+  const lv=parseInt(document.getElementById('cl-level').value);
+  if(!lv){alert('Please select a class level first.');return}
+  const terms=parseInt(document.getElementById('cl-terms').value);
+  const children=parseInt(document.getElementById('cl-children').value);
+  const bus   =document.getElementById('ex-bus').checked?80*terms*children:0;
+  const lunch =document.getElementById('ex-lunch').checked?60*terms*children:0;
+  const uniform=document.getElementById('ex-uniform').checked?120*children:0;
+  const pta   =document.getElementById('ex-pta').checked?30*terms*children:0;
+  const base  =lv*terms*children;
+  const total =base+bus+lunch+uniform+pta;
+  const fmt=n=>'GHS '+n.toLocaleString();
+  document.getElementById('calc-grand').textContent=fmt(total);
+  let bd=`📚 Tuition (${terms} term${terms>1?'s':''}×${children} child${children>1?'ren':''}): ${fmt(base)}`;
+  if(bus)bd+=`\n🚌 School Bus: ${fmt(bus)}`;
+  if(lunch)bd+=`\n🍱 School Lunch: ${fmt(lunch)}`;
+  if(pta)bd+=`\n🏫 PTA Levy: ${fmt(pta)}`;
+  if(uniform)bd+=`\n👕 Uniform: ${fmt(uniform)}`;
+  bd+=`\n────────────────────\n💳 TOTAL: ${fmt(total)}`;
+  document.getElementById('calc-bd').textContent=bd;
+  const o=document.getElementById('calc-out');
+  o.style.display='block';o.style.animation='popIn .25s ease';
+}
+
+/* ── GALLERY FILTER ── */
+function filt(cat){
+  document.querySelectorAll('.gi').forEach(el=>{
+    el.style.display=(cat==='all'||el.dataset.c===cat)?'flex':'none';
+  });
+}
+
+/* ── CONTACT FORM ── */
+function sendMsg(){
+  const n=document.getElementById('cf-n').value;
+  const e=document.getElementById('cf-e').value;
+  const m=document.getElementById('cf-m').value;
+  if(!n||!e||!m){alert('Please fill in all fields.');return}
+  document.getElementById('cf-ok').style.display='block';
+  document.getElementById('cf-n').value='';
+  document.getElementById('cf-e').value='';
+  document.getElementById('cf-m').value='';
+}
+
+/* ── FAQ ── */
+const FAQS=[
+  ['What age does the school accept learners?','We accept children from 2½ years for Baby Class (Nursery) up to Primary seven (approximately 12 years). Children must turn 3 by the start of the academic year for KG 1.'],
+  ['How do I enroll my child?','Visit the school office with your child\'s birth certificate, immunization records, passport photographs, and a completed admission form. You can also email: greybellnursery&primaryschool@gmail.com.'],
+  ['What are the school hours?','Gates open at 6:30 AM. School begins at 7:30 AM. Nursery & KG close at 3:00 PM. Primary classes close at 4:00 PM. After-school care runs until 5:00 PM.'],
+  ['What uniform does the school use?','Dark Blue shorts/skirt with a light blue and white checkered shirt ;  Sports kit required for P.E days. Uniform sets are found available from the school office at affordable prices.'],
+  ['Is school feeding / lunch available?','Yes! A nutritious lunch program is available. Dietary restrictions can be accommodated — inform the office at admission.'],
+  ['What is the school\'s transport arrangement?','A school transport service covers major areas around Greybell for the child who fall sick at school. Contact the office for route details and registration.'],
+  ['How can I check my child\'s academic progress?','Use the LIN Portal on this website for term reports, attendance and fee status. End-of-term report cards are also sent home. Parent-Teacher Conferences are held once a term.'],
+  ['What extra-curricular activities are available?','Football, athletics,  choir, cultural dance, drama, debate club, art club, and scouts.'],
+  ['How do I pay fees?','By mobile money (MTN ), bank transfer, or in person at the school accounts office. Always request an official receipt.'],
+  ['Does the school have a special needs programme?','Yes. Our School  provides support for learners needing additional help. Speak to the Head Teacher for an individual assessment.'],
+  ['How do I contact a specific teacher?','Email greybellprimaryschool@gmail.com with the teacher\'s name, or call the office to book a meeting. Teachers are available for parent consultation every day.'],
+  ['What are the school\'s core values?','Excellence — striving for academic and personal best. Integrity — upholding honesty and moral principles. Respect — fostering empathy and inclusivity. Innovation — encouraging creativity and exploration.'],
+];
+(function buildFAQ(){
+  document.getElementById('faq-list').innerHTML=FAQS.map((f,i)=>`
+    <div class="faq-item">
+      <button class="faq-q" onclick="togFAQ(${i})">
+        <span>${i+1}. ${f[0]}</span><span class="arr">▾</span>
+      </button>
+      <div class="faq-a" id="fa${i}">${f[1]}</div>
+    </div>`).join('');
+})();
+function togFAQ(i){
+  document.querySelectorAll('.faq-q')[i].classList.toggle('op');
+  document.getElementById('fa'+i).classList.toggle('op');
+}
+
+/* ── PAGE EDITOR ── */
+const EDPAGES=[
+  {id:'home',   label:'🏠 Home'},
+  {id:'about',  label:'📖 About'},
+  {id:'staff',  label:'👩‍🏫 Staff'},
+  {id:'gallery',label:'🖼️ Gallery'},
+  {id:'contact',label:'✉️ Contact'},
+  {id:'location',label:'📍 Location'},
+  {id:'faq',    label:'❓ FAQ'},
+];
+const originals={};
+(function buildEd(){
+  const tabs=document.getElementById('ed-tabs');
+  const panes=document.getElementById('ed-panes');
+  EDPAGES.forEach((p,i)=>{
+    const html=document.getElementById('pg-'+p.id).innerHTML;
+    originals[p.id]=html;
+    const t=document.createElement('button');
+    t.className='ed-tab'+(i===0?' cur':'');
+    t.textContent=p.label;
+    t.onclick=()=>{
+      document.querySelectorAll('.ed-tab').forEach(x=>x.classList.remove('cur'));
+      document.querySelectorAll('.ed-pane').forEach(x=>x.classList.remove('cur'));
+      t.classList.add('cur');
+      document.getElementById('ep-'+p.id).classList.add('cur');
+    };
+    tabs.appendChild(t);
+    const pane=document.createElement('div');
+    pane.className='ed-pane'+(i===0?' cur':'');
+    pane.id='ep-'+p.id;
+    pane.innerHTML=`<p style="font-size:12px;color:var(--muted);margin-bottom:8px">Editing: <strong>${p.label}</strong></p>
+      <textarea id="ec-${p.id}" spellcheck="false">${esc(html)}</textarea>`;
+    panes.appendChild(pane);
+  });
+})();
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function applyEd(){
+  EDPAGES.forEach(p=>{
+    const ta=document.getElementById('ec-'+p.id);
+    if(ta) document.getElementById('pg-'+p.id).innerHTML=ta.value;
+  });
+  showFb('✅ Changes applied! Navigate to pages to see edits.','#d4f8e8','#1a6e42');
+}
+function resetEd(){
+  EDPAGES.forEach(p=>{
+    const ta=document.getElementById('ec-'+p.id);
+    if(ta&&originals[p.id]){
+      ta.value=esc(originals[p.id]);
+      document.getElementById('pg-'+p.id).innerHTML=originals[p.id];
+    }
+  });
+  showFb('🔄 All pages reset to original content.','#fde8e8','#9a1a1a');
+}
+function dlPage(){
+  const blob=new Blob([document.documentElement.outerHTML],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='greybell_school_website.html';
+  a.click();
+}
+function showFb(msg,bg,col){
+  const fb=document.getElementById('ed-fb');
+  fb.style.display='block';fb.style.background=bg;fb.style.color=col;
+  fb.style.padding='11px 14px';fb.style.borderRadius='9px';fb.style.fontWeight='700';
+  fb.textContent=msg;
+  setTimeout(()=>fb.style.display='none',3500);
+}
+</script>
+</body>
+</html>
